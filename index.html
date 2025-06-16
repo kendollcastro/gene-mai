@@ -23,13 +23,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 80px 40px;
+            padding: 60px 40px;
             text-align: center;
+            overflow-y: auto;
         }
 
         .slide-content {
             max-width: 800px;
             width: 100%;
+            margin: auto;
         }
 
         h1 {
@@ -80,6 +82,8 @@
             line-height: 2;
             margin: 40px 0;
             font-weight: 300;
+            max-height: none;
+            overflow: visible;
         }
 
         .simple-list li {
@@ -158,6 +162,39 @@
             right: 40px;
             display: flex;
             gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-arrows {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .arrow-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(191, 247, 71, 0.1);
+            border: 2px solid rgba(191, 247, 71, 0.3);
+            color: #bff747;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .arrow-button:hover {
+            background: #bff747;
+            color: #000000;
+            border-color: #bff747;
+            transform: scale(1.1);
         }
 
         .nav-dot {
@@ -237,20 +274,173 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
-            .price { font-size: 4em; }
-            .clients-grid { 
-                grid-template-columns: 1fr; 
-                gap: 40px; 
+            .slide {
+                padding: 40px 20px;
+                min-height: 100vh;
+                align-items: flex-start;
+                padding-top: 60px;
             }
+            
+            .slide-content {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+            
+            h1 { 
+                font-size: 2.5em; 
+                margin-bottom: 30px;
+                line-height: 1.1;
+            }
+            
+            h2 { 
+                font-size: 2.2em; 
+                margin-bottom: 25px;
+                line-height: 1.2;
+            }
+            
+            .price { 
+                font-size: 3.5em; 
+                margin: 30px 0;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+                margin-bottom: 40px;
+                line-height: 1.4;
+            }
+            
+            .simple-list {
+                font-size: 1.1em;
+                line-height: 1.8;
+                margin: 30px 0;
+                text-align: left;
+                padding: 0 20px;
+            }
+            
+            .simple-list li {
+                margin: 12px 0;
+                padding: 8px 0;
+            }
+            
             .stats { 
                 flex-direction: column; 
-                gap: 30px; 
+                gap: 30px;
+                margin: 40px 0;
             }
+            
+            .stat-number {
+                font-size: 2.5em;
+            }
+            
             .cta-button {
                 display: block;
-                margin: 20px 0;
+                margin: 15px auto;
+                padding: 18px 40px;
+                font-size: 1.1em;
+                width: fit-content;
+                min-width: 200px;
+            }
+            
+            .minimal-box {
+                padding: 25px 20px;
+                margin: 30px 0;
+                font-size: 0.95em;
+            }
+            
+            .navigation {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+            
+            .nav-arrows {
+                bottom: 20px;
+                left: 20px;
+                gap: 10px;
+            }
+            
+            .arrow-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1em;
+            }
+            
+            .nav-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .slide-number {
+                top: 20px;
+                right: 20px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            .divider {
+                width: 40px;
+                margin: 25px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 30px 15px;
+                padding-top: 50px;
+            }
+            
+            .slide-content {
+                padding: 0 5px;
+            }
+            
+            h1 { 
+                font-size: 2em; 
+                margin-bottom: 25px;
+            }
+            
+            h2 { 
+                font-size: 1.8em; 
+                margin-bottom: 20px;
+            }
+            
+            .price { 
+                font-size: 3em; 
+                margin: 25px 0;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+                margin-bottom: 35px;
+            }
+            
+            .simple-list {
+                font-size: 1em;
+                padding: 0 15px;
+                line-height: 1.6;
+            }
+            
+            .simple-list li {
+                margin: 10px 0;
+                padding: 6px 0;
+            }
+            
+            .cta-button {
+                padding: 16px 30px;
+                font-size: 1em;
+                min-width: 180px;
+            }
+            
+            .minimal-box {
+                padding: 20px 15px;
+                font-size: 0.9em;
+            }
+            
+            .stat-number {
+                font-size: 2.2em;
+            }
+            
+            .stat-label {
+                font-size: 1em;
             }
         }
     </style>
@@ -260,7 +450,7 @@
     <div class="slide" id="slide-1">
         <div class="slide-number">01</div>
         <div class="slide-content fade-in">
-            <img style="margin-bottom: 40px;" src="img/kenlabs-logo-004.png" alt="">
+            <img style="margin-bottom: 40px; max-width: 200px; height: auto;" src="img/kenlabs-logo-004.png" alt="KenLabs Logo">
             <h1>Marketing Digital<br><span class="highlight">Integral</span></h1>
             <div class="divider"></div>
             <p class="subtitle">Una propuesta completa para tres negocios en Jacó</p>
@@ -285,6 +475,7 @@
                 <li>Creación de Reels</li>
                 <li>Configuración de Campañas publicitarias dirigidas</li>
                 <li>Configuración de Community management</li>
+                <li>Integraciones con WhatsApp Business</li>
             </ul>
 
             <div class="price">$1,200<span class="price-small">/mes</span></div>
@@ -380,11 +571,11 @@
                     <div class="stat-label">Vamos Jaco Tours</div>
                 </div>
                 <div class="stat">
-                    <span class="stat-number" style="font-size: 2em;">$1,000</span>
+                    <span class="stat-number" style="font-size: 2em;">$1,400</span>
                     <div class="stat-label">The Sanctuary CR</div>
                 </div>
                 <div class="stat">
-                    <span class="stat-number" style="font-size: 2em;">$1,400</span>
+                    <span class="stat-number" style="font-size: 2em;">$1,000</span>
                     <div class="stat-label">Smoke Valley</div>
                 </div>
             </div>
@@ -394,7 +585,8 @@
             
             <div class="minimal-box">
                 <p style="font-size: 1.4em; font-weight: 300; line-height: 1.8;">
-                    <span class="highlight">Costo inicial $1,000</span><br>
+                    <span class="highlight">Año completo:</span> $43,200<br>
+                    <span class="highlight">Sin costos iniciales</span><br>
                     Todo desarrollo web y ecommerce incluido
                 </p>
             </div>
@@ -410,10 +602,10 @@
             
             <p class="subtitle">Una decisión simple para tres negocios exitosos</p>
             
-            <!-- <div style="margin: 60px 0;">
+            <div style="margin: 60px 0;">
                 <a href="#" class="cta-button">Aceptar Propuesta</a>
                 <a href="#" class="cta-button cta-secondary">Programar Reunión</a>
-            </div> -->
+            </div>
 
             <div class="minimal-box">
                 <p style="font-size: 1.2em; font-weight: 300; line-height: 1.8;">
@@ -423,6 +615,12 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button class="arrow-button" onclick="previousSlide()">‹</button>
+        <button class="arrow-button" onclick="nextSlide()">›</button>
     </div>
 
     <!-- Navigation -->
